@@ -1,25 +1,17 @@
 import './App.css';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Navbar from './components/navbar/Navbar';
-import ProductList from './components/product-list/ProductList';
 import { Routes, Route } from 'react-router-dom';
 import ProductDetails from './components/product-details/ProductDetails';
-import { useDispatch, useSelector } from 'react-redux';
-import { listProducts } from './actions/productActions';
+import HomePage from './components/homepage/HomePage';
+import Category from './components/category/Category';
 function App() {
-  const dispatch = useDispatch();
-  const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
-  useEffect(() => {
-    dispatch(listProducts());
-  }, []);
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<ProductList products={products} />} />
+        <Route path="/category/:name" element={<Category />} />
         <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/" element={<HomePage />} />
       </Routes>
     </div>
   );

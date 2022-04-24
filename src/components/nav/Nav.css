@@ -1,0 +1,12 @@
+.Nav {
+text-decoration: none;
+color: white;
+padding:10px 20px;
+background-color: black;
+
+}
+
+.Nav a{
+    color:white;
+    margin: 0 20px;
+}

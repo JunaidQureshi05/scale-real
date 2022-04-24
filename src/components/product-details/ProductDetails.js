@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import Loading from '../loading/Loading';
 import Rating from '../rating/Rating';
 import { useSelector, useDispatch } from 'react-redux';
-import { listProductDetails } from '../../actions/productActions';
+import { listProductDetails } from '../actions/productActions';
 const ProductDetails = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
