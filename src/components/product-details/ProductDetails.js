@@ -18,7 +18,11 @@ const ProductDetails = () => {
   if (loading) {
     return <Loading />;
   }
+  let count = 0;
   let { title, image, description, rating, price } = product;
+  if (rating) {
+    count = rating.count;
+  }
   return (
     <div className="ProductDetails">
       <div className="left">
@@ -30,7 +34,7 @@ const ProductDetails = () => {
       </div>
       <div className="right">
         <select name="" id="">
-          {[...Array(rating.count).keys()].map((x) => (
+          {[...Array(count).keys()].map((x) => (
             <option key={x + 1} value={x + 1}>
               {x + 1}
             </option>
