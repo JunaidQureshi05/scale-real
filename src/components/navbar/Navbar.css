@@ -1,0 +1,37 @@
+.Navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;    
+    height: 50px;
+    border-bottom: 1px solid black;
+}
+
+.Navbar .logo {
+    font-weight: bold;
+    font-size: 20px;
+    font-style: italic;
+}
+.Navbar a {
+    text-decoration: none;
+    color:black
+}
+
+.Navbar ul li {
+    list-style: none;
+    padding:0 10px;
+}
+.Navbar ul li a {
+    padding:5px 10px;
+    border-radius: 5px;
+    border:1px solid black;
+    transition: all 0.2s ease-in;
+}
+
+.Navbar ul li a:hover{
+    background-color: black;
+    color:white
+}
+.nav {
+    display: flex;
+}
