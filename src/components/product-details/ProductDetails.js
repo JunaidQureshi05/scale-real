@@ -5,19 +5,15 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Loading from '../loading/Loading';
 import Rating from '../rating/Rating';
+import { useSelector, useDispatch } from 'react-redux';
+import { listProductDetails } from '../../actions/productActions';
 const ProductDetails = () => {
   let { id } = useParams();
-  let [product, setProduct] = useState({});
-  let [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const productDetails = useSelector((state) => state.productDetails);
+  const { product, loading, error } = productDetails;
   useEffect(() => {
-    const getProduct = async () => {
-      const { data } = await axios.get(
-        `https://fakestoreapi.com/products/${id}`
-      );
-      setProduct(data);
-      setLoading(false);
-    };
-    getProduct();
+    dispatch(listProductDetails(id));
   }, [id]);
   if (loading) {
     return <Loading />;

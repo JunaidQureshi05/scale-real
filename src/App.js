@@ -5,14 +5,14 @@ import Navbar from './components/navbar/Navbar';
 import ProductList from './components/product-list/ProductList';
 import { Routes, Route } from 'react-router-dom';
 import ProductDetails from './components/product-details/ProductDetails';
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from './actions/productActions';
 function App() {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
   useEffect(() => {
-    const getProducts = async () => {
-      const { data } = await axios.get('https://fakestoreapi.com/products');
-      setProducts(data);
-    };
-    getProducts();
+    dispatch(listProducts());
   }, []);
   return (
     <div className="App">
