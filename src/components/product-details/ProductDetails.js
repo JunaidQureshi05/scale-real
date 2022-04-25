@@ -26,7 +26,6 @@ const ProductDetails = () => {
     count = rating.count;
   }
   const addToCartHandler = () => {
-    console.log('clicked');
     dispatch(addToCart(product.id, Number(qty)));
     navigate(`/cart`);
   };
