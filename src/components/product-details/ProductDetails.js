@@ -1,15 +1,17 @@
 import React from 'react';
 import './ProductDetails.css';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Loading from '../loading/Loading';
-import Rating from '../rating/Rating';
 import { useSelector, useDispatch } from 'react-redux';
 import { listProductDetails } from '../actions/productActions';
+import { addToCart } from '../actions/cartActions';
+import { useNavigate } from 'react-router-dom';
 const ProductDetails = () => {
+  const [qty, setQty] = useState(1);
   let { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const productDetails = useSelector((state) => state.productDetails);
   const { product, loading, error } = productDetails;
   useEffect(() => {
@@ -23,6 +25,12 @@ const ProductDetails = () => {
   if (rating) {
     count = rating.count;
   }
+  const addToCartHandler = () => {
+    console.log('clicked');
+    dispatch(addToCart(product.id, Number(qty)));
+    navigate(`/cart`);
+  };
+
   return (
     <div className="ProductDetails">
       <div className="left">
@@ -33,15 +41,15 @@ const ProductDetails = () => {
         <p>{description}</p>
       </div>
       <div className="right">
-        <select name="" id="">
-          {[...Array(count).keys()].map((x) => (
+        <select name="" id="" onChange={(e) => setQty(e.target.value)}>
+          {[...Array(10).keys()].map((x) => (
             <option key={x + 1} value={x + 1}>
               {x + 1}
             </option>
           ))}
         </select>
         <p className="price">${price}</p>
-        <button>Add to cart</button>
+        <button onClick={addToCartHandler}>Add to cart</button>
       </div>
     </div>
   );

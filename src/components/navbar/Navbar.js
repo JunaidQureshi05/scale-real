@@ -7,16 +7,11 @@ const Navbar = () => {
       <div className="logo">Fake Store</div>
       <ul className="nav">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">All Products</Link>
         </li>
+
         <li>
-          <Link to="/"> Products </Link>
-        </li>
-        <li>
-          <Link to="/">Cart</Link>
-        </li>
-        <li>
-          <Link to="/">Sign In</Link>
+          <Link to="/cart">Cart</Link>
         </li>
       </ul>
     </div>
